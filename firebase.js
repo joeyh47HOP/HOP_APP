@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDWz-ssg-21jV6vAJFg6Lj9egdDFfFagnc",
+  authDomain: "hopapp1.firebaseapp.com",
+  projectId: "hopapp1",
+  storageBucket: "hopapp1.appspot.com",
+  messagingSenderId: "973394214626",
+  appId: "1:973394214626:ios:53db3d6ac0d669c0aba8bb"
 };
 
 const app = initializeApp(firebaseConfig);
