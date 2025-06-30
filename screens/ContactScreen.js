@@ -28,7 +28,7 @@ To contact our Customer Service Department:</Text>
       <Text>Email: customerservice@hourofpower.org
 Phone: (714) 971-4101
 {"\n\n"}
-We strive to return all phone calls, emails, and other inquiries in a timely manner. If we have not met your expectations for truly exceptional customer service, please contact Russ Jacobson, our Chief Operating Officer, for assistance and resolution. {"\n\n"}You can reach Pastor Russ directly at: russ.jacobson@hourofpower.org or (714) 622-2952.
+We strive to return all phone calls, emails, and other inquiries in a timely manner. If we have not met your expectations for truly exceptional customer service, please contact Russ Jacobson, our Chief Operating Officer, for assistance and resolution. 
 {"\n\n"}
 Thank you, and God bless!
 

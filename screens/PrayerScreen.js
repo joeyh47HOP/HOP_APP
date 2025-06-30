@@ -1,163 +1,134 @@
-// import React, { useState } from 'react';
-// import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator } from 'react-native';
-// import { db } from '../firebase';
-// import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
-// export default function PrayerScreen() {
-//   const [message, setMessage] = useState('');
-//   const [isSubmitting, setIsSubmitting] = useState(false);
 
-//   const submitPrayer = async () => {
-//     if (!message.trim()) {
-//       Alert.alert('Error', 'Please enter your prayer request');
-//       return;
-//     }
-    
-//     setIsSubmitting(true);
-    
-//     try {
-//       await addDoc(collection(db, 'prayer_requests'), { 
-//         message: message.trim(), 
-//         createdAt: serverTimestamp(),
-//         status: 'pending'
-//       });
-//       Alert.alert('Success', 'Your prayer request has been submitted');
-//       setMessage('');
-//     } catch (e) {
-//       console.error('Error adding document: ', e);
-//       Alert.alert('Error', 'Failed to submit prayer request. Please try again.');
-//     } finally {
-//       setIsSubmitting(false);
-//     }
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.label}>Enter your prayer request:</Text>
-//       <TextInput
-//         style={styles.input}
-//         value={message}
-//         onChangeText={setMessage}
-//         placeholder="Type your prayer request here..."
-//         multiline
-//         numberOfLines={5}
-//         textAlignVertical="top"
-//       />
-      
-//       <TouchableOpacity
-//         style={styles.submitButton}
-//         onPress={submitPrayer}
-//         disabled={isSubmitting}
-//       >
-//         {isSubmitting ? (
-//           <ActivityIndicator color="#fff" />
-//         ) : (
-//           <Text style={styles.submitButtonText}>Submit Prayer Request</Text>
-//         )}
-//       </TouchableOpacity>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: { flex: 1, padding: 20 },
-//   label: { 
-//     fontSize: 18, 
-//     marginBottom: 10,
-//     color: '#333'
-//   },
-//   input: { 
-//     borderWidth: 1, 
-//     borderColor: '#ccc', 
-//     borderRadius: 5, 
-//     padding: 15, 
-//     height: 150, 
-//     marginBottom: 20,
-//     fontSize: 16,
-//     textAlignVertical: 'top'
-//   },
-//   submitButton: {
-//     backgroundColor: '#6200ee',
-//     padding: 15,
-//     borderRadius: 5,
-//     alignItems: 'center',
-//   },
-//   submitButtonText: {
-//     color: 'white',
-//     fontSize: 16,
-//     fontWeight: 'bold',
-//   }
-// });
-
+// 
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ActivityIndicator
+} from 'react-native';
 import { db } from '../firebase';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
 export default function PrayerScreen() {
-    const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-    const submitPrayer = async () => {
-        const trimmedMessage = message.trim();
-        if (!trimmedMessage) {
-            Alert.alert('Please enter a prayer request.');
-            return;
-        }
+  const submitPrayer = async () => {
+    const trimmedMessage = message.trim();
+    if (!trimmedMessage) {
+      Alert.alert('Please enter a prayer request.');
+      return;
+    }
 
-        try {
-            setLoading(true);
-            await addDoc(collection(db, 'prayer_requests'), {
-                message: trimmedMessage,
-                createdAt: Timestamp.now(),
-                isAnonymous: true // Optional: expand if using auth later
-            });
+    try {
+      setLoading(true);
+      await addDoc(collection(db, 'prayer_requests'), {
+        message: trimmedMessage,
+        createdAt: Timestamp.now(),
+        isAnonymous: true,
+      });
 
-            Alert.alert('Success', 'Your prayer request has been submitted.');
-            setMessage('');
-        } catch (error) {
-            console.error('Error submitting prayer:', error);
-            Alert.alert('Error', 'Something went wrong. Please try again.');
-        } finally {
-            setLoading(false);
-        }
-    };
+      Alert.alert('Thank you', 'Your prayer request has been submitted.');
+      setMessage('');
+    } catch (error) {
+      console.error('Error submitting prayer:', error);
+      Alert.alert('Error', 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <KeyboardAvoidingView
-            style={styles.container}
-            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+  return (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <View style={styles.card}>
+        <Text style={styles.title}>We’d love to pray with you</Text>
+        <Text style={styles.subtitle}>Share your prayer request below:</Text>
+        <TextInput
+          style={styles.input}
+          value={message}
+          onChangeText={setMessage}
+          placeholder="Type your prayer here..."
+          placeholderTextColor="#999"
+          multiline
+          numberOfLines={5}
+          editable={!loading}
+        />
+        <TouchableOpacity
+          style={[styles.button, loading && styles.buttonDisabled]}
+          onPress={submitPrayer}
+          disabled={loading}
         >
-            <Text style={styles.label}>Enter your prayer request:</Text>
-            <TextInput
-                style={styles.input}
-                value={message}
-                onChangeText={setMessage}
-                placeholder="Type here..."
-                multiline
-                numberOfLines={5}
-                editable={!loading}
-            />
-            <Button
-                title={loading ? 'Submitting...' : 'Submit'}
-                onPress={submitPrayer}
-                disabled={loading}
-            />
-        </KeyboardAvoidingView>
-    );
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>Submit Prayer</Text>
+          )}
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 20, justifyContent: 'center' },
-    label: { fontSize: 18, marginBottom: 10, fontWeight: '500' },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 8,
-        padding: 12,
-        height: 120,
-        textAlignVertical: 'top',
-        marginBottom: 20,
-        backgroundColor: '#fff',
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#f4f4f7',
+    justifyContent: 'top',
+    padding: 20,
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: 16,
+    padding: 24,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 4,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: '700',
+    marginBottom: 6,
+    color: '#333',
+  },
+  subtitle: {
+    fontSize: 16,
+    marginBottom: 16,
+    color: '#666',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 10,
+    padding: 14,
+    fontSize: 16,
+    textAlignVertical: 'top',
+    backgroundColor: '#fafafa',
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#1C628F',
+    paddingVertical: 14,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  buttonDisabled: {
+    opacity: 0.7,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
 });
