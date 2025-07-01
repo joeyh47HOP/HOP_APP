@@ -65,8 +65,10 @@ import becomingImage from  '../assets/BecomingJesus.png';
 import godlyImage from '../assets/GodlyMeditations.png'; 
 
 export default function Ebooks() {
-  const becomingUrl = 'https://secure.hourofpower.org/resources/becoming-like-jesus-e-book/';
-  const godlyUrl = 'https://secure.hourofpower.org/resources/godly-meditations-ebook/';
+  // const becomingUrl = 'https://secure.hourofpower.org/resources/becoming-like-jesus-e-book/';
+  // const godlyUrl = 'https://secure.hourofpower.org/resources/godly-meditations-ebook/';
+  const becomingUrl = 'https://mcusercontent.com/83de301bbe7ba68b7bf45a730/files/329952df-59b4-e561-63a2-ffc7ed233f36/becoming_like_jesus_ebook_compressed.pdf'; 
+  const godlyUrl = 'https://mcusercontent.com/83de301bbe7ba68b7bf45a730/files/4bae08aa-c009-6867-5256-57810d1c13f4/Godly_Meditations_eBook.pdf'; 
 
 
   const openBecoming = () => {

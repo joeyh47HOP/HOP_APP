@@ -18,6 +18,7 @@ import ScheduleScreen from './screens/ScheduleScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import EbookScreen from './screens/EbookScreen';
+import DonateScreen from './screens/DonateScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +56,7 @@ export default function App() {
             <Stack.Screen name="Contact" component={ContactScreen} options={{ title: 'Contact Us' }} />
              <Stack.Screen name="Ebook" component={EbookScreen} options={{ title: 'eBooks' }} />
             <Stack.Screen name="Favorites" component={FavoritesScreen} />
+            <Stack.Screen name="Donate" component={DonateScreen} />
             {/* <Stack.Screen name="PrayerFeed" component={PrayerFeedScreen} options={{ title: 'Prayer Feed' }} /> */}
             <Stack.Screen name="Messages" component={OneMinuteMessagesScreen} options={{ title: 'One Minute Messages' }} />
             <Stack.Screen name="Schedule" component={ScheduleScreen} options={{ title: 'Weekly Schedule' }} />
