@@ -125,8 +125,8 @@ export default function HomeScreen({ navigation }) {
         <NavButton icon="film" label="Broadcasts" onPress={() => navigation.navigate('Broadcasts')} />
           <NavButton icon="book" label="Messages" onPress={() => navigation.navigate('Messages')} />
         
-           <NavButton icon="leaf" label="Donate" onPress={() => Linking.openURL('https://hourofpower.org/yt_donate/')} />
-        
+           {/* <NavButton icon="leaf" label="Donate" onPress={() => Linking.openURL('https://hourofpower.org/yt_donate/')} /> */}
+        {/* <NavButton icon="leaf" label="Donate" onPress={() => navigation.navigate('Donate')} /> */}
         <NavButton icon="book" label="eBooks" onPress={() => navigation.navigate('Ebook')} />
           <NavButton icon="chatbubble-outline" label="Prayer" onPress={() => navigation.navigate('Prayer')} />
         {/* <NavButton icon="heart-outline" label="Favorites" onPress={() => navigation.navigate('Favorites')} /> */}
