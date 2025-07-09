@@ -110,9 +110,9 @@ export default function HomeScreen({ navigation }) {
             <TouchableOpacity onPress={() => { navigation.navigate('Prayer'); setModalVisible(false); }}>
               <Text style={styles.modalItem}>Prayer Requests</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { navigation.navigate('Favorites'); setModalVisible(false); }}>
+            {/* <TouchableOpacity onPress={() => { navigation.navigate('Favorites'); setModalVisible(false); }}>
               <Text style={styles.modalItem}>Favorites</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity onPress={() => setModalVisible(false)}>
               <Text style={styles.modalClose}>Close</Text>
             </TouchableOpacity>
