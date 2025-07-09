@@ -172,7 +172,7 @@ export default function OneMinuteMessagesScreen() {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch (e) {
-      console.warn("Failed to save cache:", e);
+      // console.warn("Failed to save cache:", e);
     }
   };
 
@@ -184,7 +184,7 @@ export default function OneMinuteMessagesScreen() {
         setPosts(cachedData);
       }
     } catch (e) {
-      console.warn("Failed to load cache:", e);
+      // console.warn("Failed to load cache:", e);
     }
   };
 
@@ -232,7 +232,7 @@ export default function OneMinuteMessagesScreen() {
       saveCache(formatted);
     } catch (err) {
       setError("Failed to load messages. Showing cached messages if available.");
-      console.error(err);
+      // console.error(err);
       await loadCache();
     } finally {
       setLoading(false);

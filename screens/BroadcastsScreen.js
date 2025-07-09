@@ -367,7 +367,7 @@ export default function BroadcastsScreen() {
       hasShownOfflineAlert.current = false;
       retryAttempted.current = false;
     } catch (err) {
-      console.error('Video load error:', err);
+      //console.error('Video load error:', err);
 
       if (err.message === 'Network request failed' && !retryAttempted.current) {
         retryAttempted.current = true;
