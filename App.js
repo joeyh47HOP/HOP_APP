@@ -80,7 +80,7 @@ import PrayerScreen from './screens/PrayerScreen';
 import AboutUsScreen from './screens/AboutUsScreen';
 import BroadcastsScreen from './screens/BroadcastsScreen';
 import ContactScreen from './screens/ContactScreen';
-import FavoritesScreen from './screens/FavoritesScreen';
+// import FavoritesScreen from './screens/FavoritesScreen';
 import OneMinuteMessagesScreen from './screens/OneMinuteMessagesScreen';
 import ScheduleScreen from './screens/ScheduleScreen';
 import EbookScreen from './screens/EbookScreen';
@@ -104,7 +104,7 @@ export default function App() {
         <Stack.Screen name="About" component={AboutUsScreen} options={{ title: 'About Us' }} />
         <Stack.Screen name="Contact" component={ContactScreen} options={{ title: 'Contact Us' }} />
         <Stack.Screen name="Ebook" component={EbookScreen} options={{ title: 'eBooks' }} />
-        <Stack.Screen name="Favorites" component={FavoritesScreen} />
+        {/* <Stack.Screen name="Favorites" component={FavoritesScreen} /> */}
         <Stack.Screen name="Messages" component={OneMinuteMessagesScreen} options={{ title: 'One Minute Messages' }} />
         <Stack.Screen name="Schedule" component={ScheduleScreen} options={{ title: 'Weekly Schedule' }} />
       </Stack.Navigator>
